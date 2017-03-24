@@ -23,7 +23,7 @@ function listarProdutos() {
 					htmlItem += "<center>";
 						htmlItem += "<span class='nome'>" + element.nome + "</span> </br>";
 						htmlItem += "<span class='preco'>R$ "  + element.preco +  "</span> </br>";
-						htmlItem += "<img src='" + element.imagem + "' width='200' height='200' />";
+						htmlItem += "<img src='" + element.imagem + "' width='100' height='100' />";
 						htmlItem += "<br/></br>";
 						htmlItem += "<a href='#' onclick='submetePedido(event, " + element.id + ")'><img src='../assets/img/cart.png' width='40' height='40' /></a>";
 					htmlItem += "</center>";
@@ -47,7 +47,11 @@ function submetePedido(e, idProduto) {
 		
 		$.ajax({
 			url: URL_APILOJAVIRTUAL_CADASTRARPEDIDOS,
-			data: formToJSON(),
+			data: JSON.stringify({
+				"id": $('#idProduto').val(),
+				"nome": $('#nome').val(),
+				"cartao": $('#cartao').val()
+			}),
 			type: 'POST',
 			dataType: 'json',
 			contentType : 'application/json',
@@ -61,10 +65,4 @@ function submetePedido(e, idProduto) {
 	
 	}
 
-}
-
-function formToJSON() {
-	return JSON.stringify({
-        "id": $('#idProduto').val()
-	});
 }

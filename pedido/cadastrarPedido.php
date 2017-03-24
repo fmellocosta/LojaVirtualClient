@@ -11,11 +11,16 @@
 		
 		<div class="regras">
 			Escolha um produto e clique no ícone do carrinho para finalizar o pedido.<br/>
-			Ao clicar, o pedido ja será feito e contabilizará o consumo de 1 unidade no BD. (Ponto de melhoria: tela de confirmacao de pedido)<br/>
 		</div>
 		
 		<br/><br/>
 		
+		<div class="dados">
+			Nome: <input type="text" name="nome" id="nome" size="30" />
+			<br/>
+			Número Cartão: <input type="text" name="cartao" id="cartao" size="50" />
+		</div>
+
 		<input type="hidden" name="idProduto" id="idProduto" />
 		
 		<div class="produtos"></div>

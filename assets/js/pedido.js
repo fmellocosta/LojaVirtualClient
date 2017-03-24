@@ -2,12 +2,19 @@ var URL_APILOJAVIRTUAL_LISTARPRODUTOS = 'http://localhost:8080/LojaVirtualServer
 var URL_APILOJAVIRTUAL_CADASTRARPEDIDOS = 'http://localhost:8080/LojaVirtualServer/rest/pedido/cadastrar'
 	
 $(document).ready(function () {
-	
+	listarProdutos();
+});
+
+function listarProdutos() {
+
 	$.ajax({ 
 		type: 'GET', 
 		url: URL_APILOJAVIRTUAL_LISTARPRODUTOS, 
 		dataType: 'json',
 		success: function (data) { 
+			
+			$(".produtos").empty();
+
 			$.each( data, function( key, element ) {
 				
 				var htmlItem = "";
@@ -27,29 +34,33 @@ $(document).ready(function () {
 			});		
 		}
 	});
-		
-});
+
+}
 
 function submetePedido(e, idProduto) {
 	
 	e.preventDefault();
 	
-	$("#idProduto").val(idProduto);
+	if ($(".produtos").length > 0) {
+
+		$("#idProduto").val(idProduto);
+		
+		$.ajax({
+			url: URL_APILOJAVIRTUAL_CADASTRARPEDIDOS,
+			data: formToJSON(),
+			type: 'POST',
+			dataType: 'json',
+			contentType : 'application/json',
+			success: function(data, status, xhr){
+				alert('Pedido #' + data.id + ' realizado com sucesso!');
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert('Ocorreu um erro ao processar o pedido, tente novamente mais tarde!');
+			}
+		});	
 	
-	$.ajax({
-		url: URL_APILOJAVIRTUAL_CADASTRARPEDIDOS,
-		data: formToJSON(),
-		type: 'POST',
-		dataType: 'json',
-		contentType : 'application/json',
-		success: function(data){
-			alert('Pedido #' + data.id + ' efetuado com sucesso!');
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			alert('Ocorreu um erro ao processar o pedido, tente novamente mais tarde!');
-		}
-	});	
-	
+	}
+
 }
 
 function formToJSON() {

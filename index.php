@@ -5,11 +5,19 @@
 	
 	<body>
 		<h1>Página Principal</h1>
-		<h3>Escolha a opção</h3>
+		<h2>Escolha a opção</h2>
+		
+		<h3>Produtos</h3>
 		<ul>
-			<li><a href="<?=SCRIPT_ROOT;?>/produto/formProduto.php">Produtos</a></li>
-			<li><a href="<?=SCRIPT_ROOT;?>/pedido/formPedido.php">Pedidos</a></li>
+			<li><a href="<?=SCRIPT_ROOT;?>/produto/listarProdutos.php">Gerenciar Produtos</a></li>
+			<li><a href="<?=SCRIPT_ROOT;?>/produto/cadastrarProduto.php">Cadastrar Produto</a></li>
 		</ul>
+		
+		<h3>Pedidos</h3>
+		
+		<ul>
+			<li><a href="<?=SCRIPT_ROOT;?>/pedido/cadastrarPedido.php">Cadastrar Pedido</a></li>
+		</ul>		
 	</body>
 
 </html>

@@ -7,10 +7,11 @@
 	<body>
 
 		<h1>Pedido</h1>
-		<h3><a href="<?=SCRIPT_ROOT;?>">Inicio</a> :: Pedido</h3>
+		<h3><a href="<?=SCRIPT_ROOT;?>">Inicio</a> :: Cadastrar Pedido</h3>
 		
 		<div class="regras">
 			Escolha um produto e clique no ícone do carrinho para finalizar o pedido.<br/>
+			Ao clicar, o pedido ja será feito e contabilizará o consumo de 1 unidade no BD. (Ponto de melhoria: tela de confirmacao de pedido)<br/>
 		</div>
 		
 		<br/><br/>
